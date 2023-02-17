@@ -5,15 +5,16 @@
 #include <stdio.h>
 
 
-/** 
+/**
  * main - Prints if n is positive, zero or negative
- * return 0
+ * Return: Always (Success)
  */
 
 int main(void)
 {
 	int n;
 	srand(time(0));
+
 	n = rand() - RAND_MAX / 2;
 	/* your code goes there */
 	if (n > 0)
