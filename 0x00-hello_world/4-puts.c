@@ -2,7 +2,7 @@
 
 /**
  * Description - Print to standard output
- * main - contains the logic
+ * main: contains the logic
  * Return: Return 0 when successful
  */
 
