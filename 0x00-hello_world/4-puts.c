@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 /**
- * Description: Print to standard output
  * main - entry point
  * Return: Return 0 when successful
  */
