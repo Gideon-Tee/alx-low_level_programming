@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 /**
- * Description: Print to standard output
- * main - contains the logic
+ * Description - Print to standard output
+ * main: contains the logic
  * Return: Return 0 when successful
  */
 
