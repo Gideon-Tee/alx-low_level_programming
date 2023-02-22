@@ -4,12 +4,12 @@
 /**
  * _abs - function block
  *
- *@a - value to be processed
+ *@a: value to be processed
  *
  * Return: absolute value
  */
 
 int _abs(int a)
 {
-	return abs(a);
+	return abs((a));
 }
