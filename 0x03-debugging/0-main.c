@@ -1,22 +1,14 @@
 #include "main.h"
-#include <stdlib.h>
-#include <time.h>
 
 /**
- * main - tests the function, positive_or_negative() from main.h
+ * main - tests function positive_or_negative()
  *
  * Return: returns 0
- *
  */
 
 int main(void)
 {
 	int n = 0;
-	
-	/*
-	srand(time(0));
-	n = rand() - RAND_MAX / 2;
-	*/
 
 	positive_or_negative(n);
 
