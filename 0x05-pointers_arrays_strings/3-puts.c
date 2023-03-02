@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _puts - Function that prints a string followed by a new line to the stdout.
+ * _puts - Function that prints a string
  * @str: pointer to the string to be written.
  *
  * Return: No return.
@@ -13,7 +13,7 @@ void _puts(char *str)
 
 	while (str[len] != '\0')
 	{
-		putchar(str[len]);
+		_putchar(str[len]);
 		len++;
 	}
 	putchar('\n');
