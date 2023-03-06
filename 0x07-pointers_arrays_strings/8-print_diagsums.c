@@ -1,6 +1,13 @@
 #include "main.h"
 #include <stdio.h>
 
+/**
+ * print_diagsums - prints the sums of matrix diagonals
+ * @a: pointer to the matrix
+ * @size: size of the square matrix
+ *
+ * Return: Nothing
+ */
 
 void print_diagsums(int *a, int size)
 {
@@ -27,3 +34,4 @@ void print_diagsums(int *a, int size)
 	}
 
 	printf("%d, %d", sum1, sum2);
+}
