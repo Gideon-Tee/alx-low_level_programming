@@ -1,34 +1,28 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
- * _strchr - returns pointer to first occurence of char
- * @s: string to check
- * @c: character to check
+ **_strchr - function that locates a character in a string.
+ * @s: pointer to the null-terminated byte string to be analyzed.
+ * @c: character to search for.
+ *
+ * Return:  a pointer to first occurence of c.
  */
+
 
 char *_strchr(char *s, char c)
 {
-	unsigned int size;
-	unsigned int i;
+	unsigned int i = 0;
 
-	size = 0;
-
-	while (*(s + size) != '\0')
+	/* loop through string s */
+	for (; *(s + i) != '\0'; i++)
 	{
-		size++;
-	}
-
-	for (i = 0; i <= size; i++)
-	{
-		if (*(s + i) == 'c')
-		{
+		/* check if a character c is in s */
+		if (*(s + i) == c)
 			return (s + i);
-			break;
-		}
-		else
-		{
-			if (i == size)
-				return ('\0');
-		}
 	}
+	if (*(s + i) == c)
+		return (s + i);
 
+	return ('\0');
+}
