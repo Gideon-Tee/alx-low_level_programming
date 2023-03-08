@@ -4,7 +4,8 @@
 void _puts_recursion(char *s)
 {
 	if (strlen(s) == 0)
-		return;
+		_putchar('');
 
 	_putchar(s[0]) + _puts_recursion(s + 1);
+	_putchar('\n');
 }
