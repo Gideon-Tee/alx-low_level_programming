@@ -14,7 +14,7 @@ int _isPrime(int n, int i)
 	if (n == i)
 		return (0);
 
-	return (_isPrime(n, i + 1);
+	return (_isPrime(n, i + 1));
 }
 
 /**
