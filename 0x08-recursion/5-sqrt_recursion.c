@@ -8,6 +8,23 @@
  * Return: square root of n or -1 if n doesn't have a natural square root
  */
 
+/**
+ * _sqr_root - returns the sqare root of a number
+ * @n: integer
+ * @j: square root guess
+ *
+ * Return: square root of the number or -1.
+ */
+
+int _sqr_root(int n, int j)
+{
+        if (n == j * j)
+                return (j);
+        if (n < j * j)
+                return (-1);
+        return (_sqr_root(n, j + 1));
+}
+
 int _sqrt_recursion(int n)
 {
 	if (n < 0)
@@ -19,21 +36,3 @@ int _sqrt_recursion(int n)
 
 	return (_sqr_root(n, 0));
 }
-
-/**
- * _sqr_root - returns the sqare root of a number
- * @n: integer
- * @j: square root guess
- *
- * Return: square root of the number or -1.
- */
-
-int _sqr_root(int n, int j)
-{
-	if (n == j * j)
-		return (j);
-	if (n < j * j)
-		return (-1);
-	return (_sqr_root(n, j + 1));
-}
-
