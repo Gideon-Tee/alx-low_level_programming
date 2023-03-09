@@ -16,7 +16,6 @@ int _sqrt_recursion(int n)
 		return (-1);
 	else
 		return (_square_root(n, 0));
-}
 
 /**
  * _square_root - calculates square root
@@ -32,4 +31,5 @@ int _square_root(int n, int i)
 	if (n < i * i)
 		return (-1);
 	return (_square_root(n, i + 1));
+}
 }
