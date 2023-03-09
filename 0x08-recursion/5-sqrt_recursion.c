@@ -11,18 +11,18 @@
 /**
  * _sqr_root - returns the sqare root of a number
  * @n: integer
- * @j: square root guess
+ * @j: initial guess.
  *
  * Return: square root of the number or -1.
  */
 
 int _sqr_root(int n, int j)
 {
-        if (n == j * j)
-                return (j);
-        if (n < j * j)
-                return (-1);
-        return (_sqr_root(n, j + 1));
+	if (n == j * j)
+		return (j);
+	if (n < j * j)
+		return (-1);
+	return (_sqr_root(n, j + 1));
 }
 
 int _sqrt_recursion(int n)
