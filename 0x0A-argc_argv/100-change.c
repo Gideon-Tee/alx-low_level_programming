@@ -6,7 +6,7 @@
  * main - prints the number of coins to make change
  * @argc: number of arguments to main
  * @argv: the arguments to main
- * return: 0 when successful
+ * Return: 0 when successful
  */
 
 int main(int argc, char *argv[])
