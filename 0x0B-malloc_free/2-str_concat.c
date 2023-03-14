@@ -31,8 +31,6 @@ char *str_concat(char *s1, char *s2)
 	for (x = 0; x < i; x++)
 		newStr[x] = s1[x];
 
-	x += 1;
-
 	for (y = 0; y <= j; y++, x++)
 		newStr[x] = s2[y];
 
