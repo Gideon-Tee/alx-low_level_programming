@@ -1,104 +1,150 @@
 #include "main.h"
+#include <stdlib.h>
+#include <ctype.h>
 
 /**
- * main - function that multiplies two positive numbers.
- * @argc: number of arguments.
- * @argv: pointer to array of arguments.
+ * _print - moves a string one place to the left and prints the string
+ * @str: string to move
+ * @l: size of string
  *
- * Print the result, followed by a new line.
- * If the number of arguments is incorrect, print Error, followed by a,
- * new line, and exit with a status of 98.
- * num1 and num2 should only be composed of digits. If not, print Error,
- * followed by a new line, and exit with a status of 98.
- * You are allowed to use more than 5 functions in your file.
- *
- * Return: always 0 (Success)
+ * Return: void
  */
-int main(int argc, char *argv[])
+void _print(char *str, int l)
 {
-	char *str1, *str2;
-	int length1, length2, length, i, carry, digit1, digit2, *result, a = 0;
+	int i, j;
 
-	str1 = argv[1], str2 = argv[2];
-	if (argc != 3 || !is_digit(str1) || !is_digit(str2))
-		errors();
-	length1 = _strlen(str1);
-	length2 = _strlen(str2);
-	length = length1 + length2 + 1;
-	result = malloc(sizeof(int) * length);
-	if (!result)
-		return (1);
-	for (i = 0; i <= length1 + length2; i++)
-		result[i] = 0;
-	for (length1 = length1 - 1; length1 >= 0; length1--)
+	i = j = 0;
+	while (i < l)
 	{
-		digit1 = str1[length1] - '0';
-		carry = 0;
-		for (length2 = _strlen(str2) - 1; length2 >= 0; length2--)
-		{
-			digit2 = str2[length2] - '0';
-			carry += result[length1 + length2 + 1] + (digit1 * digit2);
-			result[length1 + length2 + 1] = carry % 10;
-			carry /= 10;
-		}
-		if (carry > 0)
-			result[length1 + length2 + 1] += carry;
+		if (str[i] != '0')
+			j = 1;
+		if (j || i == l - 1)
+			_putchar(str[i]);
+		i++;
 	}
-	for (i = 0; i < length - 1; i++)
-	{
-		if (result[i])
-			a = 1;
-		if (a)
-			_putchar(result[i] + '0');
-	}
-	if (!a)
-		_putchar('0');
+
 	_putchar('\n');
-	free(result);
+	free(str);
+}
+
+/**
+ * mul - multiplies a char with a string and places the answer into dest
+ * @n: char to multiply
+ * @num: string to multiply
+ * @num_index: last non NULL index of num
+ * @dest: destination of multiplication
+ * @dest_index: highest index to start addition
+ *
+ * Return: pointer to dest, or NULL on failure
+ */
+char *mul(char n, char *num, int num_index, char *dest, int dest_index)
+{
+	int j, k, mul, mulrem, add, addrem;
+
+	mulrem = addrem = 0;
+	for (j = num_index, k = dest_index; j >= 0; j--, k--)
+	{
+		mul = (n - '0') * (num[j] - '0') + mulrem;
+		mulrem = mul / 10;
+		add = (dest[k] - '0') + (mul % 10) + addrem;
+		addrem = add / 10;
+		dest[k] = add % 10 + '0';
+	}
+	for (addrem += mulrem; k >= 0 && addrem; k--)
+	{
+		add = (dest[k] - '0') + addrem;
+		addrem = add / 10;
+		dest[k] = add % 10 + '0';
+	}
+	if (addrem)
+	{
+		return (NULL);
+	}
+	return (dest);
+}
+
+/**
+ * check_for_digits - checks the arguments to ensure they are digits
+ * @av: pointer to arguments
+ *
+ * Return: 0 if digits, 1 if not
+ */
+int check_for_digits(char **av)
+{
+	int i, j;
+
+	for (i = 1; i < 3; i++)
+	{
+		for (j = 0; av[i][j]; j++)
+		{
+			if (av[i][j] < '0' || av[i][j] > '9')
+				return (1);
+		}
+	}
 	return (0);
 }
 
 /**
- * is_digit - function that checks if a string contains a non-digit char.
- * @str: pointer to null-terminated byte string to be examined.
+ * init - initializes a string
+ * @str: sting to initialize
+ * @l: length of strinf
  *
- * Return: 0 if a non-digit is found, 1 otherwise.
+ * Return: void
  */
-int is_digit(char *str)
+void init(char *str, int l)
 {
-	int i = 0;
+	int i;
 
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
-	}
-	return (1);
+	for (i = 0; i < l; i++)
+		str[i] = '0';
+	str[i] = '\0';
 }
 
 /**
- * _strlen - function that returns the length of a string.
- * @str: pointer to null-terminated byte string to be examined.
+ * main - multiply two numbers
+ * @argc: number of arguments
+ * @argv: argument vector
  *
- * Return: The length of the string.
+ * Return: zero, or exit status of 98 if failure
  */
-int _strlen(char *str)
-{
-	int i = 0;
 
-	while (str[i] != '\0')
+int main(int argc, char *argv[])
+{
+	int l1, l2, ln, ti, i;
+	char *a;
+	char *t;
+	char e[] = "Error\n";
+
+	if (argc != 3 || check_for_digits(argv))
 	{
-		i++;
+		for (ti = 0; e[ti]; ti++)
+			_putchar(e[ti]);
+		exit(98);
 	}
-	return (i);
-}
-
-/**
- * errors - function that handles errors for main.
- */
-void errors(void)
-{
-	printf("Error\n");
-	exit(98);
+	for (l1 = 0; argv[1][l1]; l1++)
+		;
+	for (l2 = 0; argv[2][l2]; l2++)
+		;
+	ln = l1 + l2 + 1;
+	a = malloc(ln * sizeof(char));
+	if (a == NULL)
+	{
+		for (ti = 0; e[ti]; ti++)
+			_putchar(e[ti]);
+		exit(98);
+	}
+	init(a, ln - 1);
+	for (ti = l2 - 1, i = 0; ti >= 0; ti--, i++)
+	{
+		t = mul(argv[2][ti], argv[1], l1 - 1, a, (ln - 2) - i);
+		if (t == NULL)
+		{
+			for (ti = 0; e[ti]; ti++)
+				_putchar(e[ti]);
+			free(a);
+			exit(98);
+		}
+	}
+	_print(a, ln - 1);
+	return (0);
 }
