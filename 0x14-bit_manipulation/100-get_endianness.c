@@ -8,15 +8,10 @@
 
 int get_endianness(void)
 {
-	unsigned int n = 1;
-	char *c = (char *) &n;
+	int i;
+	char *test;
 
-	/**
-	 * if little endian, n will be stored in memory as
-	 * 01 00 00 00, so *c = 1
-	 */
-	if (*c)
-		return (1);
-
-	return (0);
+	i = 1;
+	test = (char *)&i;
+	return ((int)test[0]);
 }
